@@ -5,7 +5,7 @@ const { userControler } = require('./controller/user.controller.js');
 const { getHashMD5 } = require('./helpers/string.helper.js');
 
 const app = express();
-const port = 3000;
+const port = 3050;
 
 app.use(express.json());
 
@@ -17,21 +17,19 @@ app.post('/create', async (req, res) => {
         res.status(201).json({
             message: 'Usuário cadastrado com sucesso',
             code: 201
-        });
-        res.end();
-        
+        }).end();
+
     } catch (error) {
         console.error(error);
-        res.status(404);
-        res.end();
-    }
+        res.status(404).end();
+    };
 });
 
-app.get('/list', async (req, res) => {
-    console.log(req.body.password);
-    console.log(getHashMD5(req.body.password));
-    res.end();
-});
+// app.get('/list', async (req, res) => {
+//     console.log(req.body.password);
+//     console.log(getHashMD5(req.body.password));
+//     res.end();
+// });
 
 
 app.listen(port, async () => {
