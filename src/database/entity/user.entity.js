@@ -7,27 +7,33 @@ module.exports = new EntitySchema({
     columns: {
         id: {
             primary: true,
-            type: "int",
+            type: Number,
             generated: true,
         },
         nameUser: {
-            type: "varchar",
+            type: String,
+            nullable: false,
         },
         profileName: {
-            type: "varchar",
+            type: String,
         },
         accountType: {
-            type: "int",
+            type: Number,
+            nullable: false,
         },
         userCpf: {
-            type: "varchar",
+            type: String,
             length: 14,
+            nullable: false,
+            unique: true,
         },
         email: {
-            type: "varchar",
+            type: String,
+            nullable: false,
         },
         password: {
-            type: "varchar",
+            type: String,
+            nullable: false,
         },
     },
     // relations: {
@@ -39,3 +45,4 @@ module.exports = new EntitySchema({
     //     },
     // },
 })
+

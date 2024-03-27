@@ -1,5 +1,6 @@
 
 const { database } = require('../database/database.js'); 
+const { getHashMD5 } = require('../helpers/string.helper.js');
 
 const userControler = () => {
     const datasource = database().getDatasource();
@@ -12,14 +13,13 @@ const userControler = () => {
             accountType: request.body.accountType,
             userCpf: request.body.userCpf,
             email: request.body.email,
-            password: request.body.password,
+            password: getHashMD5(request.body.password),
         };
 
         postUser
             .save(user)
             .then((savedUser) => {
-                console.log("Usuário cadastrado: ", savedUser)
-                // return res.status(400).json();
+                console.log("Usuário cadastrado: ", savedUser);
             });
     };
     
