@@ -20,7 +20,11 @@ const userControler = () => {
             .save(user)
             .then((savedUser) => {
                 console.log("Usuário cadastrado: ", savedUser);
-            });
+            })
+            .catch((error) => {
+                console.error("Erro ao cadastrar usuário: ", error)
+                res.status(404).end();
+            })
     };
     
     return createUser;

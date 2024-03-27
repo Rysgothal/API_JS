@@ -25,12 +25,11 @@ app.post('/create', async (req, res) => {
     };
 });
 
-// app.get('/list', async (req, res) => {
-//     console.log(req.body.password);
-//     console.log(getHashMD5(req.body.password));
-//     res.end();
-// });
-
+app.get('/', async (req, res) => {
+    res.json({
+        message: 'Servidor On-line',
+        code: 200}).end();
+});
 
 app.listen(port, async () => {
     console.log(`Server is running on http://localhost:${port}`);

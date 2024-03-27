@@ -16,9 +16,9 @@ module.exports = new EntitySchema({
         },
         profileName: {
             type: "varchar",
-        },
+        },          
         accountType: {
-            type: "int",
+            type: "varchar",
             nullable: false,
         },
         userCpf: {
@@ -36,13 +36,4 @@ module.exports = new EntitySchema({
             nullable: false,
         },
     },
-    // relations: {
-    //     accountType: {
-    //         target: "AccountType",
-    //         type: "one-to-one",
-    //         joinTable: true,
-    //         cascade: false,
-    //     },
-    // },
 })
-

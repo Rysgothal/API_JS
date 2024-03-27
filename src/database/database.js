@@ -15,10 +15,8 @@ const database = () => {
             type: "sqlite",
             database: "./db.sqlite",
             synchronize: true,
-            entities: [
-                require("./entity/user.entity.js"),
-                // require("./src/database/entity/user.accountType.js")
-            ] 
+            migrations: ["./migrations/*.js"],
+            entities: [require("./entity/user.entity.js")] 
         });
         
         await datasource.initialize();
