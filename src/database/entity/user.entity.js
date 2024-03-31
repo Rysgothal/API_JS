@@ -16,6 +16,7 @@ module.exports = new EntitySchema({
         },
         profileName: {
             type: "varchar",
+            unique: true,
         },          
         accountType: {
             type: "varchar",

@@ -1,39 +1,15 @@
 
 const express = require('express');
+const { userRouter } = require('./routers/userRouter.js'); 
 const { database } = require('./database/database.js');
-const { userControler } = require('./controller/user.controller.js');
-const { getHashMD5 } = require('./helpers/string.helper.js');
 
 const app = express();
 const port = 3050;
 
 app.use(express.json());
-
-app.post('/create', async (req, res) => {
-    try {
-        const createUser = userControler();
-        
-        createUser(req, res);
-        res.status(201).json({
-            message: 'Usuário cadastrado com sucesso',
-            code: 201
-        }).end();
-
-    } catch (error) {
-        console.error(error);
-        res.status(404).end();
-    };
-});
-
-app.get('/', async (req, res) => {
-    res.json({
-        message: 'Servidor On-line',
-        code: 200}).end();
-});
+app.use('/user', userRouter);
 
 app.listen(port, async () => {
     console.log(`Server is running on http://localhost:${port}`);
     await database().init();
 });
-
-
